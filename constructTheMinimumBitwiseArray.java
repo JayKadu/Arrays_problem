@@ -22,3 +22,27 @@ class Solution {
         return output;
     }
 }
+
+// Construct the Minimum Bitwise Array II
+class Solution {
+    public int[] minBitwiseArray(List<Integer> nums) {
+        int len = nums.size();
+        int[] output = new int[len];
+        for(int i=0;i<len;i++){
+            int target = nums.get(i);
+            if(target == 2){
+                output[i]=-1;
+                continue;
+            }else{
+                for(int j=1;j<32;j++){
+                    if((target >> j & 1) == 0){
+                        output[i]= target ^ (1 << (j -1));
+                        break;
+                    }
+                }
+            }      
+        }
+        return output;
+        
+    }
+}
